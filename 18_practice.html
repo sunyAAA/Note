@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myModule">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div ng-controller="myCtrl">
+    <textarea name="msg" cols="30" rows="10" ng-model="msg"></textarea>
+    <select name="sel" ng-model="sel">
+        <option value="1">北京</option>
+        <option value="2">上海</option>
+        <option value="3">广州</option>
+        <option value="4">深圳</option>
+    </select>
+    <input type="radio" name="agree" ng-model="check" value="true">是
+        <input type="radio" name="agree" ng-model="check" value="false">否
+</div>
+<script src="js/angular.js"></script>
+<script>
+    var app = angular.module('myModule',['ng']);
+    app.controller('myCtrl', function ($scope) {
+//        $scope.$watch('msg',function(){
+//            if($scope.msg){
+//                console.log($scope.msg);
+//            }
+//        })
+//        $scope.$watch('sel',function(){
+//            if($scope.sel){
+//                console.log($scope.sel);
+//            }
+//
+//        })
+        $scope.$watch('check',function(){
+            if($scope.check){
+                console.log($scope.check);
+            }
+
+        })
+    });
+</script>
+</body>
+</html>

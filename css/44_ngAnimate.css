@@ -1,0 +1,31 @@
+body{
+    overflow: hidden;
+}
+.page{
+    position: absolute;
+    width: 100%;
+}
+.page.ng-enter,
+.page.ng-leave{
+    -webkit-transition: .5s linear all;
+    -moz-transition: .5s linear all;
+    -ms-transition: .5s linear all;
+    -o-transition: .5s linear all;
+    transition: .5s linear all;
+}
+.page.ng-leave{
+    opacity: 1;
+    left: 0;
+}
+.page.ng-leave.ng-leave-active{
+    opacity: 0;
+    left: -100%;
+}
+.page.ng-enter{
+    left: 100%;
+    opacity: 0;
+}
+.page.ng-enter.ng-enter-active{
+    left: 0;
+    opacity: 1;
+}

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myModule">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div ng-controller="myCtrl">
+
+</div>
+<script src="js/angular.js"></script>
+<script>
+    var app = angular.module('myModule', ['ng']);
+    app.controller('myCtrl', function ($log) {
+        $log.log('日志级别');
+        $log.debug('debug级别');
+        $log.warn('warning级别');
+        $log.info('info级别');
+        $log.error('erro级别');
+    });
+</script>
+</body>
+</html>

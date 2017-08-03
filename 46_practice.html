@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myModule">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div ng-controller="myCtrl">
+    <form name="my_form" ng-submit="save()">
+        <div>
+            用户名：<br>
+            <input type="text" ng-model="name" name="=myname" required>
+            <span ng-show=" my_form.myname.$error.required && my_form.myname.$dirty">用户名不能为空</span>
+        </div>
+        <div>
+            密码：<br>
+            <input type="text" ng-model="pwd" name="mypwd" required>
+            <span ng-show="my_form.mypwd.$error.required">密码不能为空</span>
+        </div>
+        <input type="submit" ng-disabled="my_form.$invalid">
+    </form>
+</div>
+<script src="js/angular.js"></script>
+<script>
+    var app = angular.module('myModule',['ng']);
+    app.controller('myCtrl',['$scope', function ($scope) {
+        $scope.save = function () {
+            console.log('name is'+$scope.name+"/n email is"+$scope.email);
+        }
+    }]);
+</script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myModule">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div ng-controller="myCtrl">
+    <button ng-click="reset()">CLICK ME!</button>
+</div>
+<script src="js/angular.js"></script>
+<script>
+    var app = angular.module('myModule', ['ng']);
+    app.constant('$ID',{id:10});
+//    通过constant 创建一个简单的服务          ***主要用于常量服务配置
+    app.value ('$PRICE',{price:39});
+//    通过vlaue 创建一个简单的服务
+    app.controller('myCtrl', function ($scope,$ID,$PRICE) {
+        console.log($PRICE.price);
+        console.log($ID.id);
+        $scope.reset = function(){
+            angular.extend($ID,{id:30});
+//            通过extent 修改上面常量的值
+            console.log($ID.id);
+        }
+
+    });
+</script>
+</body>
+</html>

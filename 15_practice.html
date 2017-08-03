@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myModule">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<ts-directive test-name="World Element"></ts-directive>
+<script src="js/angular.js"></script>
+<script>
+    var app = angular.module('myModule',['ng']);
+    app.controller('myCtrl', function () {
+
+    });
+    app.directive('tsDirective',function(){
+        return{
+            template:'<p>Hello {{testName}}</p>',
+            scope:{
+                testName:'@'
+//                接受指令标签 传递的值
+            }
+        }
+    });
+</script>
+</body>
+</html>

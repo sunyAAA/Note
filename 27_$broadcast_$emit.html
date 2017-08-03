@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myModule">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>事件传参相关 $broadcast  $emit</h1>
+<div ng-controller="myCtrl">
+    <!--父作用域对象-->
+    <button ng-click="funcall()">调用myCtrl02中的方法</button>
+    <div ng-controller="myCtrl02">
+        <!--子作用域对象-->
+        <button ng-click="toChild()">发送到子作用域对象</button>
+        <div ng-controller="myCtrl03">
+            <!--子级-->
+            <p>{{count}}</p>
+        </div>
+    </div>
+</div>
+<script src="js/angular.js"></script>
+<script>
+    var app = angular.module('myModule', ['ng']);
+    app.controller('myCtrl', function ($scope) {
+        $scope.$on('event_parent',function(event,data){
+            console.log('接收到event_parent');
+            console.log(data);
+            $scope.funcall = data;
+        })
+    });
+    app.controller('myCtrl02', function ($scope) {
+        $scope.toParent = function(){
+            console.log('toParent Fun is called');
+        };
+        $scope.$emit('event_parent',$scope.toParent);
+        $scope.toChild = function () {
+            $scope.num = 10;
+            $scope.$broadcast('event_child',$scope.num);
+        }
+    });
+    app.controller('myCtrl03', function ($scope) {
+        $scope.$on('event_child', function (event,data) {
+            $scope.count = data;
+        });
+    });
+</script>
+</body>
+</html>

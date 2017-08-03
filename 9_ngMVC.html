@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div ng-controller="myCtrl">
+    <!--只能使用 指定控制器内的作用域-->
+    <p>{{name}}</p>
+    <p ng-bind="name"></p>
+    <button type="button" ng-click="show()">CLICK ME!</button>
+    <!--ng 中的事件 都需要使用 ng-event名称 去绑定-->
+</div>
+<!--无法访问到 myCtrl 的作用域-->
+<span>{{name}}</span>
+<script src="js/angular.js"></script>
+<script>
+//  声明一个模块
+   var app = angular.module("myApp",['ng']);
+
+//    声明控制器
+    app.controller('myCtrl',function($scope){
+        console.log('in myCtrl');
+        $scope.name='LUNA';
+        $scope.show = function () {
+            console.log('function SHOW is called');
+        }
+    });
+</script>
+</body>
+</html>

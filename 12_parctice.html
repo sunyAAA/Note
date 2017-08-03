@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<!--调用myApp模块 并启动ng应用-->
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        table{
+            width: 600px;
+            collapse: 0;
+            border: 1px solid #aaa;
+        }
+    </style>
+</head>
+<body>
+<div ng-controller="myCtrl">
+    <button type="button" ng-click="add()">添加</button>
+    <table>
+        <thead>
+        <tr>
+            <th>单价</th>
+            <th>数量</th>
+            <th>小计</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="tmp in list">
+                <td>{{tmp.price}}</td>
+                <td>{{tmp.count}}</td>
+                <td>{{tmp.count*tmp.count}}</td>
+                <td><button ng-click="delete($index)" type="button">删除</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<script src="js/angular.js"></script>
+<script>
+//   声明一个模块
+    var app = angular.module('myApp',['ng']);
+//    声明一个控制器
+    app.controller('myCtrl',function($scope){
+        $scope.list = [
+            {price:500,count:2},
+            {price:1500,count:1},
+            {price:374,count:6},
+            {price:560,count:1}
+        ];
+        $scope.delete = function(i){
+            $scope.list.splice(i,1);
+        };
+        $scope.add = function(){
+            $scope.list.push({price:999,count:3});
+        }
+    });
+</script>
+</body>
+</html>

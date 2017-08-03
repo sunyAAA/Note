@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myModule">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div ng-controller="myCtrl">
+
+</div>
+<script src="js/angular.js"></script>
+<script>
+    var app = angular.module('myModule', ['ng']);
+    var ctrFun = function($scope,$showNew,$writeNew){
+//                          参数可以为任意字符 但是 顺序要与 $inject 注入数组一致
+        $scope.clickMe = function(msg){
+            console.log('test test');
+            $showNew.show(msg);
+        };
+        $scope.write = function(txt){
+            $scope.write = $writeNew.write(txt)
+        }
+    };
+//    单独创建控制器函数
+    ctrFun.$inject = ['$scope','$show','$write'];
+//    使用 $inject注入服务
+    app.controller('myCtrl', ctrFun);
+</script>
+</body>
+</html>

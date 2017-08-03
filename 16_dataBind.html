@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myModule">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div ng-controller="myCtrl">
+    <p>{{num}}</p>
+    <button ng-click="add()">CLICK ME!</button>
+</div>
+<script src="js/angular.js"></script>
+<script>
+    var app = angular.module('myModule',['ng']);
+    app.controller('myCtrl', function ($scope) {
+        $scope.num = 0;
+        $scope.add = function () {
+            $scope.num++;
+        }
+    });
+</script>
+</body>
+</html>

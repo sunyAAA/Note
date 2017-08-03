@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myModule">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div ng-controller="myCtrl">
+    <p>当前地址为：{{url}}</p>
+    <button ng-click="getUrl()">CLICK ME! 获取地址</button>
+</div>
+<script src="js/angular.js"></script>
+<script>
+    var app = angular.module('myModule', ['ng']);
+    app.controller('myCtrl', function ($scope,$location) {
+    //              *************在回调函数中 注入所需要的服务
+        $scope.url = '';
+        $scope.getUrl = function (){
+            $scope.url = $location.absUrl();
+//            在控制器中 如果需要使用 ng的服务 则需要在回调函数中注入
+        }
+    });
+</script>
+</body>
+</html>

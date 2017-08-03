@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<!--调用myApp模块并启动ng应用-->
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div ng-controller="myCtrl">
+    <ul>
+        <li ng-repeat="tmp in data">
+            <img ng-src="{{tmp.pic}}" alt="">
+            <p>{{tmp.name}}</p>
+            <p>{{tmp.age}}</p>
+        </li>
+    </ul>
+    <button type="button" ng-click="push()">加载更多</button>
+</div>
+<script src="js/angular.js"></script>
+<script>
+    //   1、声明一个模块       依赖模块
+    var app = angular.module("myApp", ['ng']);
+    //    2、声明一个控制器
+    app.controller('myCtrl', function ($scope) {
+//       *** $scope 是 建立 模型数据和 视图的桥梁
+        $scope.data = [{name: 'LUNA', age: 18, pic: 'img/1.jpg'},
+            {name: 'MAKI', age: 18, pic: 'img/2.jpg'},
+            {name: 'SONA', age: 18, pic: 'img/3.jpg'}
+        ];
+        $scope.push = function(){
+            $scope.data.push({name:'JOJO',age:'21',pic:'img/4.jpg'});
+        }
+    });
+</script>
+</body>
+</html>

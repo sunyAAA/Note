@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myModule">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div ng-controller="myCtrl">
+
+</div>
+<script src="js/angular.js"></script>
+<script>
+    var app = angular.module('myModule', ['ng']);
+//    通过 factory 创建自定义服务
+    app.factory('$custom',function(){
+        return{
+            print:function(){
+                console.log('$custom 中的print方法被调用了');
+            }
+        }
+    });
+//    通过injector() 拿到注入器
+    var injector = angular.injector(['ng','myModule']);
+
+    var result = injector.has('$custom');
+//    判断注入列表
+    if(result){
+        var custom = injector.get("$custom");
+//        实例化一个服务
+        custom.print();
+    }
+    app.controller('myCtrl', function () {
+
+    });
+</script>
+</body>
+</html>

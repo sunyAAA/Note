@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body ng-app="">
+<span ng-init="students=[{name:'luna',age:18,score:100},{name:'guagua',age:19,score:99},{name:'罗娜',age:22,score:85},{name:'瓜瓜',age:23,score:85}]"></span>
+<table>
+    <thead>
+    <tr>
+        <th>姓名</th>
+        <th>年龄</th>
+        <th>分数</th>
+    </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>{{students[0].name}}</td>
+            <td>{{students[0].age}}</td>
+            <td>{{students[0].score}}</td>
+        </tr>
+        <tr>
+            <td>{{students[1].name}}</td>
+            <td>{{students[1].age}}</td>
+            <td>{{students[1].score}}</td>
+        </tr>
+        <tr>
+            <td>{{students[2].name}}</td>
+            <td>{{students[2].age}}</td>
+            <td>{{students[2].score}}</td>
+        </tr>
+        <tr>
+            <td>{{students[3].name}}</td>
+            <td>{{students[3].age}}</td>
+            <td>{{students[3].score}}</td>
+        </tr>
+    </tbody>
+</table>
+<script src="js/angular.js"></script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" ng-app>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h3>ngRepeat指令</h3>
+    <!--
+        ngRepeat为HTML添加了循环功能
+
+        语法1：  <ANY ng-repeat="临时变量 in 集合"></ANY>
+
+        语法2：  <ANY ng-repeat="（下标，临时变量） in 集合"></ANY>
+
+        用途： 对于指定的集合 当中的每一个成员 依次赋值给临时变量 同时将当前的元素循环输出一遍
+    -->
+    <table ng-init="students=[{name:'luna',age:18,score:100},{name:'guagua',age:19,score:99},{name:'罗娜',age:22,score:85},{name:'瓜瓜',age:23,score:85}]">
+        <thead>
+        <tr>
+            <th>name</th>
+            <th>age</th>
+            <th>score</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="tmp in students">
+            <td ng-repeat="v in tmp">{{v}}</td>
+        </tr>
+        </tbody>
+    </table>
+    <ol>
+        <li ng-repeat="(key,value) in students">{{key + value }}</li>
+    </ol>
+    <span ng-init="car={name:'BMW',price:300000}"></span>
+    <div>
+        <a href="#" ng-repeat="tmp in car">{{tmp}}</a>
+    </div>
+    <div>
+        <a href="#" ng-repeat="(k,v) in car">{{"key is"+k+"value is"+v}}</a>
+    </div>
+<script src="js/angular.js"></script>
+</body>
+</html>

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body ng-app>
+<span ng-init="name='tom'">{{name}}</span>
+<!--在span上初始化的变量 其他位置也可以访问-->
+<p>{{name}}</p>
+
+<span ng-init="luna={name:'luna',age:'18'}"></span>
+<p>{{luna.age}}</p>
+<script src="js/angular.js"></script>
+</body>
+</html>

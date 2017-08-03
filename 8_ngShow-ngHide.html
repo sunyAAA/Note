@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<span ng-init="hasMore=false"></span>
+<!--
+    ng-show  ng-hide 根据表达式结果 改变元素的 visibilty
+    ng-if 则直接删除元素
+-->
+<button ng-show="hasMore">加载更多</button>
+<p ng-hide="hasMore">没有更多可以加载了</p>
+<script src="js/angular.js"></script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myModule">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body ng-controller="routeCtrl">
+    <div ng-view=""></div>
+    <!--3、指定载入容器-->
+<script src="js/angular.js"></script>
+<script src="js/angular-route.js"></script>
+    <!--1、引入路由文件-->
+<script>
+    var app = angular.module('myModule', ['ng','ngRoute']);
+//                                          2、声明依赖
+    app.config(function($routeProvider){
+//                      4、配置路由词典
+        $routeProvider.when('/start',{
+            templateUrl:'template/start.html'
+        })
+        .when('/start/:id',{
+            templateUrl:'template/start.html',
+            controller:'startCtrl'
+        })
+        .when('/regiest',{
+            templateUrl:'template/regiest.html'
+        })
+        .otherwise({redirectTo:'/regiest'});
+    });
+    app.controller('routeCtrl', ['$scope','$location', function ($scope,$location) {
+        $scope.jump = function(url){
+            $location.path(url);
+        }
+    }]);
+    app.controller('startCtrl',['$scope','$routeParams', function ($scope,$routeParams) {
+        console.log($routeParams.id);
+    }]);
+</script>
+</body>
+</html>

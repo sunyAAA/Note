@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myModule">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div ng-controller="myCtrl">
+
+</div>
+<script src="js/angular.js"></script>
+<script>
+    var app = angular.module('myModule', ['ng']);
+    app.factory('$me', function () {
+//        使用factory 工厂函数自定义一个服务
+        return{
+            print:function(msg){
+//                返回一个方法
+                console.log(msg)
+            }
+        }
+    });
+    app.controller('myCtrl', function ($scope,$me) {
+//        注入自定义服务
+
+        $scope.myservice = function(){
+            $me.print("Hello Service");
+        }
+    });
+</script>
+</body>
+</html>

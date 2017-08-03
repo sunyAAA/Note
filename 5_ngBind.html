@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body ng-app="">
+<span ng-init="n=8;"></span>
+<p>{{n*5}}</p>
+<p ng-bind="n*5"></p>
+<!--ng-bind 用于解决因为ng启动较慢 {{}}暴露在外的闪烁问题-->
+<script src="js/angular.js"></script>
+</body>
+</html>

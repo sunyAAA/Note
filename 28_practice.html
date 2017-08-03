@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myModule">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div ng-controller="myCtrl">
+    <table>
+        <thead>
+        <tr>
+            <th>请选择</th>
+            <th>姓名</th>
+            <th>生日</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="tmp in list">
+            <td><input type="checkbox" ng-change="funchange()" ng-model="tmp.ischeck" ng-checked="checkedAll"></td>
+            <td>{{tmp.name}}</td>
+            <td>{{tmp.birth}}</td>
+        </tr>
+        </tbody>
+        <tfoot>
+        <tr>
+            <input type="checkbox" ng-checked="allChecked" ng-model="checkedAll" ng-click="changeAll()">全选/取消全选
+        </tr>
+        </tfoot>
+    </table>
+    <button ng-click="show()">查看全部</button>
+
+</div>
+<script src="js/angular.js"></script>
+<script>
+    var app = angular.module('myModule', ['ng']);
+    app.controller('myCtrl', function ($scope) {
+        $scope.list = [
+            {name: 'king', birth: '2016-05-01', ischeck: false},
+            {name: 'golden', birth: '2016-05-04', ischeck: false}
+        ];
+        $scope.show = function () {
+            var msg = "";
+            angular.forEach($scope.list,function(value,key){
+                if(value.ischeck){
+                    msg+=value.name+'被选中';
+                }
+            });
+            if(msg===''){
+                msg="都未被选中";
+            }
+            alert(msg);
+        };
+        $scope.funchange = function () {
+            $scope.allChecked = true;
+            angular.forEach($scope.list, function (value,key) {
+               $scope.allChecked = $scope.allChecked&&value.ischeck;
+            })
+        }
+        $scope.changeAll = function(){
+            angular.forEach($scope.list, function (value,key) {
+                value.ischeck = $scope.checkedAll;
+            })
+        }
+//        $scope.allChecked = $scope.list[0].isChecked
+    });
+</script>
+</body>
+</html>

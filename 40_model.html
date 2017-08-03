@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp02">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div ng-controller="myCtrl02">
+    <button ng-click="funcClick()">CLICK ME!</button>
+</div>
+<script src="js/angular.js"></script>
+<script>
+   var app01 = angular.module('myApp01',['ng']);
+    app01.factory('$custom',function(){
+        return{
+            show:function(){
+                console.log('$custom service is called');
+            }
+        }
+    });
+    var app02 = angular.module('myApp02',['ng','myApp01']);
+    app02.controller('myCtrl02',
+        ['$scope','$custom',
+        function($scope,$custom){
+        $scope.funcClick = function(){
+            $custom.show();
+        }
+    }]);
+</script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myModule">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div ng-controller="myCtrl">
+    <div ts-hello></div>
+    <!--1、将指令作为扩展属性来使用  A-->
+    <ts-hello></ts-hello>
+    <!--2、将指令作为扩展标签来使用  E-->
+    <div class="ts-hello"></div>
+    <!--3、将指令作为class来使用    C-->
+    <!--Comment-->
+    <!--directive:ts-hello -->
+    <!--4、将指令作为注释来使用   注意指令后需要空格-->
+                                        <!--
+                                            声明时使用 驼峰式命名 tsHello
+                                            调用时 使用 -拼接  ts-hello
+                                        -->
+</div>
+<script src="js/angular.js"></script>
+<script>
+    var app = angular.module('myModule',['ng']);
+    app.controller('myCtrl', function ($scope) {
+        
+    });
+    app.directive('tsHello',function(){
+//        声明自定义指令
+        return{
+            template:'<h1>Hello Directive</h1>',
+//            创建指令模版
+            restrict:'EACM',
+//            restrict 限制使用方式 EACM
+//                                    E: Element    A:Attribute     C:Class     M:Comment (注释)
+            replace:'true'
+//            将指令作为注释使用时 需要声明
+        }
+    });
+</script>
+</body>
+</html>

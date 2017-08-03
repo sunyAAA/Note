@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myModule">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body ng-controller="parentCtrl">
+<div>
+    <h1>ngRoute的使用</h1>
+    <div ng-view=""></div>
+</div>
+
+<!--3、指定容器加载代码片段 ng-view-->
+<script src="js/angular.js"></script>
+<!--核心文件-->
+<script src="js/angular-route.js"></script>
+<!--route文件-->
+<!--1、引入工程需要的所有文件-->
+<script>
+    var app = angular.module('myModule', ['ng', 'ngRoute']);
+    //    2、创建模块时 指定依赖 ng 和 ngRoute
+    app.config(function ($routeProvider) {
+//        4、配置路由词典  ***   借助 $routeProvider .when('路由名称'，{templateUrl:'对应的HTML页面'})
+        $routeProvider.when('/myLogin', {
+                    templateUrl: 'template/login.html',
+//                  单独设置 代码片段的控制器
+                    controller:'loginCtrl'
+                })
+                .when('/myMain', {
+                    templateUrl: 'template/main.html'
+                })
+                .otherwise({redirectTo: '/myLogin'});
+//        .otherwise({redirectTo:  重定向到指定路由名称})
+    });
+    app.controller('loginCtrl', ['$scope', "$location", function ($scope, $location) {
+        $scope.jump = function () {
+            $location.path('/myMain');
+        }
+        $scope.num = 10;
+    }]);
+    app.controller('parentCtrl', ['$scope', '$location', function ($scope, $location) {
+        $scope.jump = function (arg) {
+            $location.path(arg)
+        }
+    }]);
+</script>
+</body>
+</html>

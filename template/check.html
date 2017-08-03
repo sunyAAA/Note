@@ -1,0 +1,6 @@
+<div ng-include="'template/include/header.html'"></div>
+<!--如果需要让 ng-include 生效 地址中 双引号中需要加上单引号-->
+<h1>这里是check文件</h1>
+价格：<input type="text" ng-model="price">
+<a href="#/pay/{{price}}">点我传递参数到pay页面</a>
+<div ng-include="'template/include/footer.html'"></div>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myModule">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div ng-controller="myCtrl">
+    <table>
+        <thead>
+        <tr>
+            <th>姓名</th>
+            <th>年龄</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="obj in list |orderBy:'age'">
+            <td>{{obj.name}}</td>
+            <td>{{obj.age}}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<script src="js/angular.js"></script>
+<script>
+    var app = angular.module('myModule', ['ng']);
+    app.controller('myCtrl', function ($scope,$http) {
+        $http.get('data/test.php').success(function (data) {
+            console.log(data);
+            $scope.list = data;
+            angular.forEach($scope.list, function (value,key) {
+                value.age=Number(value.age);
+            })
+        })
+    });
+
+//    要使用$http 发起 post 请求 则需要单独设置头信息
+//    *** $http.defaults.header.post = {"Content-Type:application/x-www-form-urlencoded"}
+</script>
+</body>
+</html>

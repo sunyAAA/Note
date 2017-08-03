@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myModule">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div ng-controller="myCtrl">
+    <img ng-src="{{carousel}}" alt="">
+</div>
+<script src="js/angular.js"></script>
+<script>
+    var app = angular.module('myModule', ['ng']);
+    app.controller('myCtrl', function ($scope,$interval) {
+        $scope.list = [
+            {src:'img/1.jpg'},
+            {src:'img/2.jpg'},
+            {src:'img/3.jpg'},
+            {src:'img/4.jpg'}
+        ];
+        $scope.carousel = $scope.list[0].src;
+        var i =0;
+        $interval(function(){
+            if(i>3){i=0}
+            $scope.carousel=$scope.list[i].src;
+            i++;
+        },2000,30);
+    });
+</script>
+</body>
+</html>

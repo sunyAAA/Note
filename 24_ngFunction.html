@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myModule">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div ng-controller="myCtrl">
+
+</div>
+<script src="js/angular.js"></script>
+<script>
+    var app = angular.module('myModule', ['ng']);
+    app.controller('myCtrl', function ($scope) {
+        var list = [
+            {name:'luna',age:17,score:100},
+            {name:'tom',age:19,score:55},
+            {name:'momo',age:21,score:70},
+            {name:'bob',age:22,score:60},
+            {name:'chuichui',age:18,score:90},
+            {name:'toto',age:20,score:60}
+        ];
+        angular.forEach(list, function (value,key){
+            console.log('key is'+key+'value is'+value);
+        })
+//        遍历方法
+        var jsonObj = {name:'tom',age:20};
+        var jsonStr = angular.toJson(jsonObj);
+//        将json对象 转化为 json字符串
+        console.log(jsonStr);
+    });
+</script>
+</body>
+</html>
